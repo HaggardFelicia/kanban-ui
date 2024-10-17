@@ -58,6 +58,7 @@ function KanbanBoard() {
                         <ColumnContainer
                             column={activeColumn}
                             deleteColumn={deleteColumn}
+                            updateColumn={updateColumn}
                         />
                     )}
                 </DragOverlay>,

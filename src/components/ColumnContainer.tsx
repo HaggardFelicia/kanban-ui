@@ -24,6 +24,7 @@ function ColumnContainer(props: Props) {
             type: 'column',
             column
         },
+        disabled: editMode,
     });
 
     // style for drag effects
