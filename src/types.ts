@@ -6,4 +6,11 @@ export type Id = string | number;
 export type Column = {
     id: Id;
     title: string;
-}
+};
+
+// task type has id, columnId, and content
+export type Task ={
+    id: Id,
+    columnId: Id,
+    content: string,
+};

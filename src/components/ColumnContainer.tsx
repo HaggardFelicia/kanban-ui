@@ -1,8 +1,9 @@
 import { useState } from "react";
 import DeleteIcon from "../icons/DeleteIcon";
-import { Column, Id } from "../types";
+import { Column, Id, Task } from '../types';
 import { useSortable } from "@dnd-kit/sortable";
 import {CSS} from '@dnd-kit/utilities'
+import PlusIcon from "../icons/PlusIcon";
 
 /**----------------------
  **      props
@@ -11,10 +12,13 @@ interface Props {
     column: Column;
     deleteColumn: (id:Id)=>void; 
     updateColumn: (id: Id, title:string)=>void;
+
+    createTask: (columnId:Id)=>void;
+    tasks: Task[];
 }
 
 function ColumnContainer(props: Props) {
-    const {column, deleteColumn, updateColumn} = props;
+    const {column, deleteColumn, updateColumn, createTask, tasks} = props;
     const [editMode, setEditMode] = useState(false);
 
     // making it draggable
@@ -73,14 +77,27 @@ function ColumnContainer(props: Props) {
                 }}
             />}
             <button 
-            className="deleteBtn"
+            className="deleteColumnBtn"
             onClick={()=>{
                 deleteColumn(column.id);
             }}><DeleteIcon/></button>
         </div>
         {/* column task container */}
-        <div className="columnContentContainer">Content</div>
+        <div className="columnContentContainer">
+            {tasks.map((task)=>(
+                <div key={task.id}>{task.content}</div>
+            ))}
+        </div>
         {/* column footer */}
+        <button 
+            className="addTaskBtn"
+            onClick={()=>{
+                createTask(column.id);
+            }}
+        >
+            <PlusIcon/>
+            Add Task
+        </button>
     </div>
   )
 }
