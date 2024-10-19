@@ -51,7 +51,8 @@ function KanbanBoard() {
                                 deleteColumn={deleteColumn}
                                 updateColumn={updateColumn}
                                 createTask={createTask}
-                                tasks={tasks.filter((task)=>{task.columnId === col.id})}
+                                // Showing tasks
+                                tasks={tasks.filter((task)=>task.columnId === col.id)}
                                 />
                             </div>
                         ))}
@@ -69,7 +70,7 @@ function KanbanBoard() {
                             deleteColumn={deleteColumn}
                             updateColumn={updateColumn}
                             createTask={createTask} 
-                            tasks={tasks.filter((task)=>{task.columnId === activeColumn.id})}
+                            tasks={tasks.filter((task)=>task.columnId === activeColumn.id)}
                             />
                     )}
                 </DragOverlay>,

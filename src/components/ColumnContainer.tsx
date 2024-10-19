@@ -83,7 +83,7 @@ function ColumnContainer(props: Props) {
             }}><DeleteIcon/></button>
         </div>
         {/* column task container */}
-        <div className="columnContentContainer">
+        <div className="taskContainer">
             {tasks.map((task)=>(
                 <div key={task.id}>{task.content}</div>
             ))}
