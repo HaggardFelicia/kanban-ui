@@ -4,6 +4,7 @@ import { Column, Id, Task } from '../types';
 import { useSortable } from "@dnd-kit/sortable";
 import {CSS} from '@dnd-kit/utilities'
 import PlusIcon from "../icons/PlusIcon";
+import TaskCard from "./TaskCard";
 
 /**----------------------
  **      props
@@ -14,11 +15,12 @@ interface Props {
     updateColumn: (id: Id, title:string)=>void;
 
     createTask: (columnId:Id)=>void;
+    deleteTask: (id:Id)=>void;
     tasks: Task[];
 }
 
 function ColumnContainer(props: Props) {
-    const {column, deleteColumn, updateColumn, createTask, tasks} = props;
+    const {column, deleteColumn, updateColumn, createTask, tasks, deleteTask} = props;
     const [editMode, setEditMode] = useState(false);
 
     // making it draggable
@@ -83,9 +85,10 @@ function ColumnContainer(props: Props) {
             }}><DeleteIcon/></button>
         </div>
         {/* column task container */}
-        <div className="taskContainer">
+        <div className="tasksContentContainer">
             {tasks.map((task)=>(
-                <div key={task.id}>{task.content}</div>
+                <TaskCard key={task.id} task={task} deleteTask={deleteTask}/>
+
             ))}
         </div>
         {/* column footer */}
