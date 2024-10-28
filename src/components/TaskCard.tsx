@@ -5,10 +5,38 @@ import { Id, Task } from "../types";
 interface Props{
     task: Task;
     deleteTask: (id: Id) => void;
+    updateTask: (id:Id, content:string)=>void;
 }
 
-function TaskCard({task, deleteTask}:Props) {
+function TaskCard({task, deleteTask, updateTask}:Props) {
   const [mouseIsOver, setMouseIsOver] = useState(false);
+const [editMode, setEditMode] = useState(false );
+
+const toggleEditMode = () =>{
+  setEditMode((prev)=>!prev);
+  setMouseIsOver(false);
+}
+
+if(editMode){
+  return (
+    <div 
+      className="taskContainer">
+        <textarea 
+          className="taskCardTextarea"
+          value={task.content}
+          autoFocus
+          placeholder="Task Content Here..."
+          onBlur={toggleEditMode}
+          onKeyDown={e=>{
+            if(e.key=== "Enter" ) toggleEditMode();
+          }}
+          onChange={e=> updateTask(task.id, e.target.value)}
+        >
+        </textarea>
+    </div>
+  )
+}
+
   return (
     <div 
       className="taskContainer"
@@ -18,6 +46,7 @@ function TaskCard({task, deleteTask}:Props) {
       onMouseLeave={()=>{
         setMouseIsOver(false);
       }}
+      onClick={toggleEditMode}
       >
         {task.content}
         {mouseIsOver && <button 

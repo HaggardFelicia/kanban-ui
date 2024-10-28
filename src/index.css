@@ -74,3 +74,6 @@ body,
  .titleInput{
     @apply bg-black focus:border-purple-500 outline-none px-2 border rounded w-2/3;
  }
+ .taskCardTextarea{
+    @apply bg-transparent rounded-md h-[90%] w-full resize-none border-none focus:outline-none;
+ }
