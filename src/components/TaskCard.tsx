@@ -28,7 +28,7 @@ if(editMode){
           placeholder="Task Content Here..."
           onBlur={toggleEditMode}
           onKeyDown={e=>{
-            if(e.key=== "Enter" ) toggleEditMode();
+            if(e.key=== "Enter" && e.shiftKey) toggleEditMode();
           }}
           onChange={e=> updateTask(task.id, e.target.value)}
         >
@@ -48,7 +48,9 @@ if(editMode){
       }}
       onClick={toggleEditMode}
       >
-        {task.content}
+        <p className="taskContent">
+          {task.content}
+        </p>
         {mouseIsOver && <button 
           className="deleteTaskBtn"
           onClick={()=>{

@@ -39,6 +39,9 @@ body,
 .taskContainer{
     @apply bg-mainBackgroundColor rounded-md px-4 py-2 border-2 h-[100px] min-h-[100px] content-center text-left text-wrap cursor-grab  border-purple-900 hover:border-purple-700 active:border-purple-500 relative;
 }
+.taskContent{
+    @apply my-auto h-[90%] w-full overflow-y-auto overflow-x-hidden whitespace-pre-wrap relative;
+}
 
 /**--------------------------------------------
  **               Columns
@@ -60,7 +63,7 @@ body,
     @apply stroke-gray-600 hover:stroke-purple-500 hover:bg-columnBackgroundColor rounded p-1 ;
 }
 .deleteTaskBtn{
-    @apply stroke-gray-600 content-center absolute right-4 hover:stroke-purple-700 active:stroke-purple-500;
+    @apply stroke-gray-600 content-center absolute right-7 -translate-y-10 hover:stroke-purple-700 active:stroke-purple-500;
 }
 .addTaskBtn{
     @apply flex gap-2 justify-center p-4 items-center rounded-md bg-mainBackgroundColor border-4 border-columnBackgroundColor border-x-columnBackgroundColor hover:bg-columnBackgroundColor 
