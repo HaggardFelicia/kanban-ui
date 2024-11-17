@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import DeleteIcon from "../icons/DeleteIcon";
 import { Column, Id, Task } from '../types';
-import { useSortable } from "@dnd-kit/sortable";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import {CSS} from '@dnd-kit/utilities'
 import PlusIcon from "../icons/PlusIcon";
 import TaskCard from "./TaskCard";
@@ -29,7 +29,12 @@ function ColumnContainer(props: Props) {
         tasks, 
         deleteTask, 
         updateTask} = props;
+
     const [editMode, setEditMode] = useState(false);
+
+    const tasksIds = useMemo(()=>{
+        return tasks.map(task=>task.id);
+    },[tasks]);
 
     // making it draggable
     const {
@@ -101,14 +106,16 @@ function ColumnContainer(props: Props) {
         </div>
         {/* column task container */}
         <div className="tasksContentContainer">
+            <SortableContext items={tasksIds}>
             {tasks.map((task)=>(
                 <TaskCard 
                     key={task.id} 
                     task={task} 
                     deleteTask={deleteTask}
                     updateTask={updateTask}/>
-
             ))}
+            </SortableContext>
+
         </div>
         {/* column footer */}
         <button 
