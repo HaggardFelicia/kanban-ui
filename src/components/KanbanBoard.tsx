@@ -79,8 +79,7 @@ function KanbanBoard() {
                             tasks={tasks.filter((task)=>task.columnId === activeColumn.id)}
                             />
                     )}
-                    {
-                        activeTask && <TaskCard task={activeTask} deleteTask={deleteTask} updateTask={updateTask}/>
+                    {activeTask && <TaskCard task={activeTask} deleteTask={deleteTask} updateTask={updateTask}/>
                     }
                 </DragOverlay>,
                 document.body

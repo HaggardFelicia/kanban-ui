@@ -42,7 +42,7 @@ function TaskCard({task, deleteTask, updateTask}:Props) {
   }
 
   if(isDragging){
-    return <div className="taskContainerDragging"/>
+    return <div className="taskContainerDragging"></div>
   }
 
   if(editMode){
