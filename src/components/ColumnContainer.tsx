@@ -33,7 +33,7 @@ function ColumnContainer(props: Props) {
     const [editMode, setEditMode] = useState(false);
 
     const tasksIds = useMemo(()=>{
-        return tasks.map(task=>task.id);
+        return tasks.map((task)=>task.id);
     },[tasks]);
 
     // making it draggable

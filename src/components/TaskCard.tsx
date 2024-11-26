@@ -24,7 +24,7 @@ function TaskCard({task, deleteTask, updateTask}:Props) {
       isDragging}=useSortable({
       id:task.id,
       data:{
-          type: 'task',
+          type: 'Task',
           task
       },
       disabled: editMode,
