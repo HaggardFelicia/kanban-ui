@@ -18,9 +18,10 @@
 
 - The project is styled with TailwindCSS.
 
-## To Run
+### To Install Packages
 
-- [x] Dev: *npm run dev*
-- [x]  Build: *npm run build*
-- [x]  Lint: *npm run lint*
-- [x]  Preview: *npm run preview*
+- Run ***npm i***
+
+### To Run
+
+- Dev: ***npm run dev***
