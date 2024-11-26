@@ -110,6 +110,9 @@ function KanbanBoard() {
             // filter columns by id
             const filteredCols = columns.filter((col)=> col.id !==id);
             setColumns(filteredCols);
+
+            const newTasks= tasks.filter((t)=>t.columnId!==id);
+            setTasks(newTasks);
         }
         // updateColumn
         function updateColumn(id:Id, title: string){
@@ -190,14 +193,27 @@ function KanbanBoard() {
 
             // drop a task over another task
             if(isActiveATask && isOverATask){
-                setTasks(tasks=>{
+                setTasks((tasks)=>{
                     const activeIndex = tasks.findIndex((t)=>t.id ===activeId);
                     const overIndex = tasks.findIndex((t)=>t.id===overId);
+        
+                    tasks[activeIndex].columnId = tasks[overIndex].columnId;
 
                     return arrayMove(tasks, activeIndex, overIndex);
                 });
             }
             // drop a task over a column
+            const isOVerAColumn = over.data.current?.type==="Column";
+
+            if(isActiveATask && isOVerAColumn){
+                setTasks((tasks)=>{
+                    const activeIndex = tasks.findIndex((t)=>t.id ===activeId);
+        
+                    tasks[activeIndex].columnId = overId;
+
+                    return arrayMove(tasks, activeIndex, activeIndex);
+                });
+            }
         }
 }
 
