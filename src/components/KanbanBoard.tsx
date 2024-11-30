@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import PlusIcon from '../icons/PlusIcon'
 import '../index.css'
 import { Column, Id, Task } from '../types';
-import ColumnContainer from './columnContainer';
+import ColumnContainer from './ColumnContainer';
 import { DndContext, DragEndEvent, DragOverEvent, DragOverlay, DragStartEvent, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
