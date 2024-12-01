@@ -6,4 +6,4 @@ function DeleteIcon() {
   )
 }
 
-export default DeleteIcon
+export default DeleteIcon;

@@ -7,4 +7,4 @@ function PlusIcon() {
   )
 }
 
-export default PlusIcon
+export default PlusIcon;
